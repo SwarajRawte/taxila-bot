@@ -71,6 +71,13 @@ public class TaxilaBot {
             logger.info("Testing Telegram connection...");
             if (telegramNotifier.testConnection()) {
                 logger.info("Telegram connection successful!");
+                // Send startup message
+                String startupMessage = "✅ <b>Taxila Notification Bot Started</b>\n\n" +
+                        "🤖 Bot Status: <b>ACTIVE</b>\n" +
+                        "⏰ Check Interval: <b>" + checkIntervalMinutes + " minutes</b>\n" +
+                        "🕐 Started at: <b>" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "</b>\n\n" +
+                        "Bot will check for new notifications every " + checkIntervalMinutes + " minutes.";
+                telegramNotifier.sendMessage(startupMessage);
             } else {
                 logger.warn("Telegram connection test failed, but continuing...");
             }
