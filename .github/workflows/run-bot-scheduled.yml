@@ -2,8 +2,8 @@ name: Run Taxila Notification Bot
 
 on:
   schedule:
-    # Run every 10 minutes (GitHub minimum is every 5 minutes on paid plans)
-    - cron: '*/10 * * * *'
+    # Run daily at 9 AM UTC (free tier friendly)
+    - cron: '0 9 * * *'
   workflow_dispatch:  # Allow manual trigger
   
 jobs:
